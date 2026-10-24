@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHive | Events</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container nav-inner">
+
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>Student<strong>Hive</strong></span>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="event.html" class="active">Events</a>
+                <a href="#clubs">Clubs</a>
+                <a href="#register">Register</a>
+                <a href="#activities">Activities</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="events-hero">
+        <div class="hero-content">
+
+            <span class="hero-label">
+                <i class="fa-solid fa-calendar-days"></i>
+                CAMPUS LIFE
+            </span>
+
+            <h1>Discover Your Next <span>Campus Event</span></h1>
+
+            <p>
+                Explore exciting workshops, cultural celebrations, and
+                sports competitions. Find your people, discover your
+                passion, and make every campus moment count.
+            </p>
+
+            <a href="#events" class="explore-btn">
+                Explore Events
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+
+        </div>
+
+        <div class="hero-decoration">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span class="floating-icon icon-one"><i class="fa-solid fa-code"></i></span>
+            <span class="floating-icon icon-two"><i class="fa-solid fa-music"></i></span>
+            <span class="floating-icon icon-three"><i class="fa-solid fa-trophy"></i></span>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-section" id="events">
+
+        <div class="section-heading">
+            <span class="section-label">WHAT'S HAPPENING?</span>
+            <h2>Explore Campus Events</h2>
+            <p>Find an event that matches your interests.</p>
+        </div>
+
+        <!-- Search -->
+        <div class="event-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="search"
+                id="eventSearch"
+                placeholder="Search events, workshops, sports..."
+                aria-label="Search events"
+            >
+
+            <button id="clearSearch" aria-label="Clear search">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Category Buttons -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-category="All">All Events</button>
+
+            <button class="filter-btn" data-category="Tech">
+                <i class="fa-solid fa-laptop-code"></i> Tech
+            </button>
+
+            <button class="filter-btn" data-category="Cultural">
+                <i class="fa-solid fa-masks-theater"></i> Cultural
+            </button>
+
+            <button class="filter-btn" data-category="Sport">
+                <i class="fa-solid fa-trophy"></i> Sports
+            </button>
+        </div>
+
+        <div class="results-heading">
+            <h3>Upcoming Events</h3>
+            <p id="eventCount">0 events found</p>
+        </div>
+
+        <!-- JavaScript displays event cards here -->
+        <div class="events-grid" id="eventsGrid"></div>
+
+        <div class="no-events" id="noEvents" hidden>
+            <i class="fa-solid fa-calendar-xmark"></i>
+            <h3>No events found</h3>
+            <p>Try another search or category.</p>
+            <button id="resetFilters">Show All Events</button>
+        </div>
+
+    </section>
+
+    <!-- Event Details Popup -->
+    <div class="modal-overlay" id="eventModal" hidden>
+        <div class="event-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+
+            <button class="modal-close" id="modalClose" aria-label="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <img src="" alt="" class="modal-image" id="modalImage">
+
+            <div class="modal-content">
+                <span class="event-category modal-category" id="modalCategory"></span>
+
+                <h2 id="modalTitle"></h2>
+
+                <div class="modal-info">
+                    <p><i class="fa-solid fa-calendar"></i><span id="modalDate"></span></p>
+                    <p><i class="fa-solid fa-clock"></i><span id="modalTime"></span></p>
+                    <p><i class="fa-solid fa-location-dot"></i><span id="modalVenue"></span></p>
+                    <p><i class="fa-solid fa-user-group"></i><span id="modalOrganizer"></span></p>
+                </div>
+
+                <h3>About This Event</h3>
+                <p class="modal-description" id="modalDescription"></p>
+
+                <button class="modal-done" id="modalDone">Got It</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer" id="contact">
+
+        <div class="footer-main">
+
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <span>Student<span class="footer-logo-highlight">Hive</span></span>
+                </a>
+
+                <p class="footer-tagline">Your gateway to a vibrant campus life.</p>
+
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://x.com/" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.youtube.com/" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="event.html">Events</a></li>
+                    <li><a href="index.html#clubs">Clubs</a></li>
+                    <li><a href="index.html#register">Register</a></li>
+                    <li><a href="index.html#activities">Activities</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#events">Event Calendar</a></li>
+                    <li><a href="index.html#clubs">Club Directory</a></li>
+                    <li><a href="mailto:studenthive@university.edu">Help &amp; Support</a></li>
+                    <li><a href="terms.html">Terms of Use</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column footer-contact">
+                <h3>Contact Us</h3>
+
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p>XYZ University,<br>Chennai, India</p>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fa-regular fa-envelope"></i>
+                    <a href="mailto:studenthive@university.edu">studenthive@university.edu</a>
+                </div>
+
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <a href="tel:+919876543210">+91 98765 43210</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; <span id="footerYear">2026</span> StudentHive. All rights reserved.</p>
+
+            <div class="footer-bottom-links">
+                <a href="terms.html">Terms</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="mailto:studenthive@university.edu">Support</a>
+            </div>
+        </div>
+
+    </footer>
+
+</body>
+</html>
